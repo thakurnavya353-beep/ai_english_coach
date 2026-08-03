@@ -1,0 +1,2249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>
+SpeakWise AI - English Communication Coach
+</title>
+
+
+<link rel="stylesheet" href="/static/style.css">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<!-- Premium Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+</head>
+
+
+
+<body>
+
+
+<!-- =========================
+LOGIN PAGE
+========================= -->
+
+
+<div id="loginPage" class="login-page">
+
+
+
+<div class="login-card premium-login">
+
+
+
+<div class="login-logo">
+
+<div class="logo-circle">
+🌸
+</div>
+
+
+<h1>
+SpeakWise AI
+</h1>
+
+
+</div>
+
+
+
+
+<p class="tagline">
+
+Learn • Practice • Speak with confidence ✨
+
+</p>
+
+
+
+
+
+<div id="loginBox" class="auth-box">
+
+
+
+
+
+<p class="auth-subtitle">
+Continue your English journey
+</p>
+
+
+
+
+
+<input 
+id="loginEmail"
+placeholder="Email"
+class="auth-input"
+>
+
+
+
+
+<input
+id="loginPassword"
+type="password"
+placeholder="Password"
+class="auth-input"
+>
+
+
+
+
+<button 
+onclick="login()"
+class="primary-btn">
+
+Login
+
+</button>
+
+
+
+
+<p id="loginMessage" class="message"></p>
+
+
+
+
+
+<p 
+onclick="showSignup()" 
+class="switch-text">
+
+Don't have an account? 
+<span>
+Signup
+</span>
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+<div id="signupBox" class="auth-box" style="display:none;">
+
+
+
+<h3>
+Create Account 🌸
+</h3>
+
+
+<p class="auth-subtitle">
+Start improving your English today
+</p>
+
+
+
+
+
+<input
+id="signupName"
+placeholder="Name"
+class="auth-input"
+>
+
+
+
+
+<input
+id="signupEmail"
+placeholder="Email"
+class="auth-input"
+>
+
+
+
+
+<input
+id="signupPassword"
+type="password"
+placeholder="Password"
+class="auth-input"
+>
+
+
+
+
+<button 
+onclick="signup()"
+class="primary-btn">
+
+Signup
+
+</button>
+
+
+
+
+<p id="signupMessage" class="message"></p>
+
+
+
+
+
+<p
+onclick="showLogin()"
+class="switch-text">
+
+Already have account?
+<span>
+Login
+</span>
+
+</p>
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+</div>
+<!-- =========================
+MAIN APP
+========================= -->
+
+
+<div id="appPage" style="display:none;">
+
+
+
+
+
+<!-- =========================
+SIDEBAR
+========================= -->
+
+
+<div class="sidebar premium-sidebar">
+
+
+
+<div class="sidebar-brand">
+
+
+<div class="mini-logo">
+🌸
+</div>
+
+
+<div>
+
+<h2>
+SpeakWise
+</h2>
+
+
+<p>
+AI Coach
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<button 
+onclick="clearChat()" 
+class="new-btn">
+
+
+<span>
+＋
+</span>
+
+New Conversation
+
+
+</button>
+
+
+
+
+
+
+
+<div class="side-section">
+
+
+<div class="side-title">
+
+
+<h3>
+Recent Chats
+</h3>
+
+
+</div>
+
+
+
+<div class="recent-wrapper">
+
+<div id="recentChats"></div>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="sidebar-footer">
+
+
+
+
+
+<button 
+onclick="logout()" 
+class="logout-btn">
+
+
+🚪 Logout
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+<!-- =========================
+RIGHT MAIN AREA
+========================= -->
+
+
+<div class="container premium-container">
+
+
+
+
+<!-- HEADER -->
+
+<div class="header premium-header">
+
+
+<div class="ai-avatar">
+
+    <div class="avatar-icon">
+        ✨
+    </div>
+
+</div>
+
+
+
+<div class="brand">
+
+<h1>
+🌸 SpeakWise AI
+</h1>
+
+
+<p>
+Your personal English communication partner
+</p>
+
+
+</div>
+
+
+
+<div class="header-badge">
+
+<div>
+🌱
+</div>
+
+
+<span>
+Practice Mode
+</span>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- =========================
+CHAT AREA
+========================= -->
+
+
+<div class="chat-box premium-chat">
+
+
+
+
+
+<!-- WELCOME CARD -->
+
+
+<div class="welcome-card premium-welcome">
+
+
+
+
+
+<div class="welcome-avatar">
+
+
+✨
+
+
+</div>
+
+
+
+
+
+
+<div class="welcome-text">
+
+
+<h2>
+
+Welcome to SpeakWise AI
+
+</h2>
+
+
+
+
+
+<p>
+
+Practice English conversations, improve vocabulary and speak confidently.
+
+</p>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<div id="response"></div>
+
+
+
+
+
+</div>
+<!-- =========================
+INPUT AREA
+========================= -->
+
+
+<div class="input-area premium-input">
+
+
+
+
+
+<div class="input-wrapper">
+
+
+
+<textarea
+id="userText"
+placeholder="Type your message in English..."
+></textarea>
+
+
+
+
+
+<button 
+onclick="startVoice()" 
+class="mic-btn premium-mic">
+
+
+🎤
+
+
+</button>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<button 
+onclick="sendMessage()"
+class="send-btn">
+
+
+Send
+
+<span>
+➤
+</span>
+
+
+</button>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+</div>
+<script>
+
+
+// ===============================
+// SHOW LOGIN / SIGNUP
+// ===============================
+
+
+function showSignup(){
+
+
+    document.getElementById("loginBox").style.display="none";
+
+
+    document.getElementById("signupBox").style.display="block";
+
+
+}
+
+
+
+
+
+
+function showLogin(){
+
+
+    document.getElementById("signupBox").style.display="none";
+
+
+    document.getElementById("loginBox").style.display="block";
+
+
+}
+
+
+
+
+
+
+
+
+// ===============================
+// SIGNUP
+// ===============================
+
+
+function signup(){
+
+
+
+let name =
+document.getElementById("signupName").value;
+
+
+
+let email =
+document.getElementById("signupEmail").value;
+
+
+
+let password =
+document.getElementById("signupPassword").value;
+
+
+
+
+
+fetch("/signup",{
+
+
+method:"POST",
+
+
+headers:{
+
+
+"Content-Type":"application/json"
+
+
+},
+
+
+body:JSON.stringify({
+
+
+name:name,
+
+
+email:email,
+
+
+password:password
+
+
+})
+
+
+})
+
+
+
+.then(response=>response.json())
+
+
+.then(data=>{
+
+
+if(data.success){
+
+
+    document.getElementById("loginPage").style.display="none";
+
+
+    document.getElementById("appPage").style.display="flex";
+
+
+    showApp();
+
+
+    loadChats();
+
+
+}
+else{
+
+
+    document.getElementById("signupMessage").innerHTML =
+    data.error;
+
+
+}
+
+
+
+});
+
+
+}
+
+
+
+// ===============================
+// LOGIN
+// ===============================
+
+
+function login(){
+
+
+
+let email =
+document.getElementById("loginEmail").value;
+
+
+
+let password =
+document.getElementById("loginPassword").value;
+
+
+
+
+
+
+fetch("/login",{
+
+
+
+method:"POST",
+
+
+
+headers:{
+
+
+
+"Content-Type":"application/json"
+
+
+
+},
+
+
+
+body:JSON.stringify({
+
+
+
+email:email,
+
+
+password:password
+
+
+
+})
+
+
+
+})
+
+
+
+
+
+.then(response=>response.json())
+
+
+
+.then(data=>{
+
+
+
+
+
+if(data.success){
+
+
+
+
+
+document.getElementById("loginPage").style.display="none";
+
+
+
+
+// premium app layout
+
+document.getElementById("appPage").style.display="flex";
+
+
+showApp();
+
+
+loadChats();
+
+
+
+
+
+}
+
+
+
+
+
+
+else{
+
+
+
+
+
+document.getElementById("loginMessage").innerHTML =
+data.error;
+
+
+
+
+
+}
+
+
+
+
+
+
+});
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// LOGOUT
+// ===============================
+
+
+function logout(){
+
+
+
+fetch("/logout")
+
+
+
+.then(response=>response.json())
+
+
+
+.then(data=>{
+
+
+
+
+
+document.getElementById("appPage").style.display="none";
+
+
+
+
+
+document.getElementById("loginPage").style.display="flex";
+
+
+
+
+
+});
+
+
+
+}
+// ===============================
+// SEND MESSAGE
+// ===============================
+
+
+function sendMessage(){
+window.speechSynthesis.cancel();
+
+
+
+let message =
+document.getElementById("userText").value;
+
+
+
+
+if(message.trim()==""){
+
+return;
+
+}
+
+
+
+
+
+// USER MESSAGE DISPLAY
+
+document.getElementById("response").innerHTML += `
+
+
+<div class="user-message fade-in">
+
+
+<div class="user-bubble">
+
+
+${escapeHTML(message)}
+
+
+<div class="message-actions">
+
+
+<button 
+class="edit-btn"
+onclick="editUserMessage(this)">
+✏ Edit
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+
+
+
+
+
+
+// Typing indicator
+
+
+document.getElementById("response").innerHTML += `
+
+
+
+<div id="typing" class="ai-message fade-in">
+
+
+<div class="ai-avatar-small">
+
+🌸
+
+</div>
+
+
+
+<div class="ai-bubble typing-bubble">
+
+
+<span></span>
+<span></span>
+<span></span>
+
+
+</div>
+
+
+</div>
+
+
+
+`;
+
+
+
+
+
+
+let chatBox =
+document.querySelector(".chat-box");
+
+chatBox.scrollTo({
+    top: chatBox.scrollHeight,
+    behavior:"smooth"
+});
+
+
+
+
+
+fetch("/chat",{
+
+
+
+method:"POST",
+
+
+
+headers:{
+
+
+
+"Content-Type":"application/json"
+
+
+
+},
+
+
+
+body:JSON.stringify({
+
+
+
+message:message
+
+
+
+})
+
+
+
+})
+
+
+
+
+
+
+.then(response=>response.json())
+
+
+
+.then(data=>{
+
+
+
+
+
+
+// remove typing
+
+
+let typing =
+document.getElementById("typing");
+
+
+if(typing){
+
+typing.remove();
+
+}
+
+
+
+
+
+
+
+// AI RESPONSE
+
+
+
+document.getElementById("response").innerHTML += `
+
+
+
+
+<div class="ai-message fade-in">
+
+
+
+
+
+<div class="ai-avatar-small">
+
+
+🌸
+
+
+</div>
+
+
+
+
+
+
+<div class="ai-bubble">
+
+
+${escapeHTML(data.reply).replace(/\n/g,"<br>")}
+
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+`;
+
+
+
+
+
+
+// voice reply
+
+speakAI(data.reply);
+
+
+
+// refresh sidebar
+
+loadChats();
+
+
+
+
+chatBox.scrollTo({
+    top: chatBox.scrollHeight,
+    behavior:"smooth"
+});
+
+
+});
+
+
+
+
+
+
+document.getElementById("userText").value="";
+
+
+
+}
+// ===============================
+// VOICE INPUT
+// ===============================
+// ===============================
+// VOICE INPUT
+// ===============================
+function startVoice(){
+
+    let micButton = document.querySelector(".mic-btn");
+
+    let SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+    if(!SpeechRecognition){
+
+        alert("Voice input not supported in this browser");
+        return;
+
+    }
+
+    let recognition = new SpeechRecognition();
+
+    recognition.lang = "en-IN";
+
+    // Sirf ek baar suno
+// Final result hi do
+recognition.continuous = false;
+recognition.interimResults = false;
+
+recognition.onstart = function(){
+
+    console.log("MIC STARTED");
+
+    micButton.innerHTML = "🔴";
+    micButton.classList.add("listening");
+
+    // AI ki voice band
+    window.speechSynthesis.cancel();
+
+};
+
+recognition.onresult = function(event){
+
+    let transcript = event.results[0][0].transcript;
+
+    document.getElementById("userText").value = transcript;
+
+    // Mic band
+    recognition.stop();
+
+    // Automatic message send
+    setTimeout(function(){
+        sendMessage();
+    }, 200);
+
+};
+
+recognition.onerror = function(event){
+
+    console.log(event.error);
+
+    micButton.innerHTML = "🎤";
+    micButton.classList.remove("listening");
+
+};
+
+recognition.onend = function(){
+
+    micButton.innerHTML = "🎤";
+    micButton.classList.remove("listening");
+
+};
+
+recognition.start();
+
+}
+// ===============================
+// AI VOICE REPLY
+// ===============================
+
+function speakAI(text){
+
+    if(!text){
+        return;
+    }
+
+
+    let voice = new SpeechSynthesisUtterance(text);
+
+
+    voice.lang = "en-US";
+
+    voice.rate = 1;
+
+    voice.pitch = 1;
+
+    voice.volume = 1;
+
+
+
+    window.speechSynthesis.cancel();
+
+
+    window.speechSynthesis.speak(voice);
+
+
+    console.log("AI speaking:", text);
+
+}
+// ===============================
+// NEW CHAT
+// ===============================
+
+
+function clearChat(){
+
+
+
+fetch("/new_chat",{
+
+
+
+method:"POST"
+
+
+
+})
+
+
+
+.then(response=>response.json())
+
+
+
+.then(data=>{
+
+
+
+
+
+
+document.getElementById("response").innerHTML="";
+
+
+
+document.getElementById("userText").value="";
+
+
+
+
+
+// remove welcome if needed
+
+let oldMessages =
+document.querySelectorAll(".fade-in");
+
+
+
+oldMessages.forEach(item=>{
+
+item.remove();
+
+});
+
+
+
+
+
+loadChats();
+
+
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// LOAD RECENT CHATS
+// ===============================
+
+
+function loadChats(){
+
+
+
+fetch("/conversations")
+
+
+
+.then(response=>response.json())
+
+
+
+.then(data=>{
+
+
+
+
+
+
+let box =
+document.getElementById("recentChats");
+
+
+
+
+
+box.innerHTML="";
+
+
+
+
+
+
+
+
+data.chats.forEach(chat=>{
+
+
+
+
+
+
+
+box.innerHTML += `
+
+
+
+
+<div class="recent-chat premium-recent"
+
+onclick="openChat(${chat[0]})">
+
+
+
+
+
+
+
+<div class="chat-icon">
+
+💬
+
+</div>
+
+
+
+
+
+
+
+<div class="chat-name">
+
+
+${chat[1]}
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<button
+
+onclick="deleteChat(event,${chat[0]})"
+
+class="delete-btn">
+
+
+
+🗑
+
+
+
+</button>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+`;
+
+
+
+
+
+
+});
+
+
+
+
+
+
+
+});
+
+
+
+}
+
+// ===============================
+// OPEN OLD CHAT
+// ===============================
+function openChat(id){
+
+
+fetch("/history/"+id)
+
+.then(response=>response.json())
+
+.then(data=>{
+
+
+let chatBox = document.getElementById("response");
+
+
+chatBox.innerHTML="";
+chatBox.scrollTop = 0;
+
+
+let welcome = document.querySelector(".premium-welcome");
+
+
+if(welcome){
+    welcome.style.display="none";
+}
+
+
+
+data.messages.forEach(msg=>{
+
+
+if(msg[0]=="user"){
+
+
+chatBox.innerHTML += `
+
+
+<div class="user-message fade-in">
+
+<div class="user-bubble">
+
+${escapeHTML(msg[1])}
+
+
+<div class="message-actions">
+
+<button
+class="edit-btn"
+onclick="editUserMessage(this)">
+✏ Edit
+</button>
+
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+else{
+
+
+chatBox.innerHTML += `
+
+
+<div class="ai-message fade-in">
+
+
+<div class="ai-avatar-small">
+
+🌸
+
+</div>
+
+
+
+<div class="ai-bubble">
+
+
+${escapeHTML(msg[1]).replace(/\n/g,"<br>")}
+
+
+
+<div class="message-actions">
+
+
+<button
+class="copy-btn"
+onclick="copyMessage(this)">
+
+📋 Copy
+
+</button>
+
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+});
+
+setTimeout(()=>{
+
+let chatBox = document.querySelector(".chat-box");
+
+if(chatBox){
+
+chatBox.scrollTo({
+
+top: chatBox.scrollHeight,
+
+behavior:"smooth"
+
+});
+
+}
+
+},800);
+
+});
+
+
+}
+// ===============================
+// DELETE CHAT
+// ===============================
+
+
+function deleteChat(event,id){
+
+
+
+event.stopPropagation();
+
+
+
+
+
+
+fetch("/delete/"+id,{
+
+
+
+method:"DELETE"
+
+
+
+})
+
+
+
+.then(response=>response.json())
+
+
+
+.then(data=>{
+
+
+
+
+
+loadChats();
+
+
+
+
+
+document.getElementById("response").innerHTML="";
+
+
+
+
+
+
+});
+
+
+
+}
+
+// ===============================
+// ENTER KEY TO SEND MESSAGE
+// ===============================
+
+
+document
+.getElementById("userText")
+.addEventListener("keydown",function(event){
+
+
+
+
+
+if(event.key==="Enter" && !event.shiftKey){
+
+
+
+event.preventDefault();
+
+
+
+sendMessage();
+
+
+
+}
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+// ===============================
+// AUTO SCROLL CHAT
+// ===============================
+
+
+function scrollChat(){
+
+
+
+let chatBox =
+document.querySelector(".chat-box");
+
+
+
+if(chatBox){
+
+
+chatBox.scrollTo({
+    top: chatBox.scrollHeight,
+    behavior:"smooth"
+});
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// LOAD APP ANIMATION
+// ===============================
+
+
+function showApp(){
+
+
+
+let app =
+document.getElementById("appPage");
+
+
+
+app.classList.add("show");
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// INPUT FOCUS EFFECT
+// ===============================
+
+
+let inputBox =
+document.getElementById("userText");
+
+
+
+if(inputBox){
+
+
+
+inputBox.addEventListener("focus",()=>{
+
+
+
+inputBox.parentElement.classList.add("active");
+
+
+
+});
+
+
+
+
+
+
+
+inputBox.addEventListener("blur",()=>{
+
+
+
+inputBox.parentElement.classList.remove("active");
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// BUTTON CLICK EFFECT
+// ===============================
+
+
+document.querySelectorAll("button")
+.forEach(button=>{
+
+
+
+
+
+button.addEventListener("click",function(){
+
+
+
+this.classList.add("clicked");
+
+
+
+
+
+setTimeout(()=>{
+
+
+
+this.classList.remove("clicked");
+
+
+
+},200);
+
+
+
+
+
+});
+
+
+
+
+
+});
+// ===============================
+// PAGE LOAD CHECK
+// ===============================
+
+window.onload=function(){
+
+
+fetch("/check_session")
+
+.then(response=>response.json())
+
+.then(data=>{
+
+
+if(data.logged_in){
+
+
+    document.getElementById("loginPage").style.display="none";
+
+
+    document.getElementById("appPage").style.display="flex";
+
+
+    loadChats();
+
+
+}
+else{
+
+
+    document.getElementById("loginPage").style.display="flex";
+
+
+    document.getElementById("appPage").style.display="none";
+
+
+}
+
+
+});
+
+
+};
+
+
+
+
+
+
+
+
+
+// ===============================
+// SAFE TEXT FORMATTER
+// ===============================
+
+
+function escapeHTML(text){
+
+
+
+return text
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+
+
+}
+
+
+
+
+
+
+
+
+// ===============================
+// CHAT TIME FORMAT
+// ===============================
+
+
+function getTime(){
+
+
+
+let now = new Date();
+
+
+
+return now.toLocaleTimeString([],{
+
+hour:"2-digit",
+
+minute:"2-digit"
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+// ===============================
+// ADD MESSAGE TIME
+// ===============================
+
+
+function addTime(){
+
+
+
+let messages =
+document.querySelectorAll(".user-message,.ai-message");
+
+
+
+
+
+messages.forEach(msg=>{
+
+
+
+if(!msg.querySelector(".message-time")){
+
+
+
+let time =
+document.createElement("div");
+
+
+
+time.className="message-time";
+
+
+
+time.innerHTML=getTime();
+
+
+
+
+
+msg.appendChild(time);
+
+
+
+}
+
+
+
+});
+
+
+
+}
+
+// ===============================
+// AFTER AI RESPONSE UI UPDATE
+// ===============================
+
+
+function updateChatUI(){
+
+
+
+addTime();
+
+
+
+scrollChat();
+
+
+
+}
+
+
+
+
+
+
+
+// ===============================
+// OBSERVE NEW CHAT MESSAGES
+// ===============================
+
+
+const chatObserver =
+new MutationObserver(function(){
+
+
+
+updateChatUI();
+
+
+
+});
+
+
+
+
+
+
+let responseBox =
+document.getElementById("response");
+
+
+
+if(responseBox){
+
+
+
+chatObserver.observe(responseBox,{
+
+childList:true
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// WELCOME CARD HIDE AFTER CHAT
+// ===============================
+
+
+function hideWelcome(){
+
+
+
+let welcome =
+document.querySelector(".premium-welcome");
+
+
+
+if(welcome){
+
+
+
+welcome.style.display="none";
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+// ===============================
+// RESTORE WELCOME
+// ===============================
+
+
+function showWelcome(){
+
+
+
+let welcome =
+document.querySelector(".premium-welcome");
+
+
+
+if(welcome){
+
+
+
+welcome.style.display="flex";
+
+
+
+}
+
+
+
+}
+
+
+
+// ===============================
+// COPY MESSAGE
+// ===============================
+
+function copyMessage(button){
+
+let text =
+button.closest(".ai-bubble").innerText;
+
+
+navigator.clipboard.writeText(text);
+
+
+button.innerHTML = "✅ Copied";
+
+
+setTimeout(()=>{
+
+button.innerHTML = "📋 Copy";
+
+},1500);
+
+
+}
+
+// ===============================
+// EDIT USER MESSAGE
+// ===============================
+
+function editUserMessage(button){
+
+let bubble =
+button.closest(".user-bubble");
+
+
+let text =
+bubble.innerText.replace("✏ Edit","");
+
+
+document.getElementById("userText").value=text;
+
+
+document.getElementById("userText").focus();
+
+
+}
+
+
+</script>
+
+</body>
+
+</html>
